@@ -1,29 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
-  </head>
-  <body>
+<head>
+<title>Create Account</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            background: linear-gradient(135deg, #0d6efd, #198754);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .signup-container{
+            width:100%;
+            max-width:550px;
+            background:#fff;
+            border-radius:15px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.15);
+            padding:35px;
+        }
+
+        .logo-section{
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        .logo-section h1{
+            color:#0d6efd;
+            font-size:2rem;
+            margin-bottom:5px;
+        }
+
+        .logo-section p{
+            color:#6c757d;
+        }
+
+        .form-group{
+            margin-bottom:18px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:7px;
+            font-weight:600;
+            color:#333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="file"]{
+            width:100%;
+            padding:12px 15px;
+            border:1px solid #ced4da;
+            border-radius:8px;
+            font-size:15px;
+            transition:0.3s;
+        }
+
+        input:focus{
+            outline:none;
+            border-color:#0d6efd;
+            box-shadow:0 0 0 3px rgba(13,110,253,.15);
+        }
+
+        .file-upload{
+            background:#f8f9fa;
+            border:2px dashed #ced4da;
+            border-radius:10px;
+            padding:15px;
+        }
+
+        .role-selection{
+            margin-top:20px;
+        }
+
+        .role-selection h4{
+            margin-bottom:12px;
+            color:#333;
+        }
+
+        .role-options{
+            display:flex;
+            gap:15px;
+        }
+
+        .role-card{
+            flex:1;
+            border:2px solid #dee2e6;
+            border-radius:10px;
+            padding:15px;
+            cursor:pointer;
+            transition:0.3s;
+            text-align:center;
+        }
+
+        .role-card:hover{
+            border-color:#0d6efd;
+            background:#f8fbff;
+        }
+
+        .role-card input{
+            margin-right:8px;
+        }
+
+        .btn-register{
+            width:100%;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            padding:14px;
+            font-size:16px;
+            font-weight:600;
+            border-radius:8px;
+            cursor:pointer;
+            margin-top:25px;
+            transition:0.3s;
+        }
+
+        .btn-register:hover{
+            background:#0b5ed7;
+            transform:translateY(-2px);
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:18px;
+        }
+
+        .login-link a{
+            color:#0d6efd;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .login-link a:hover{
+            text-decoration:underline;
+        }
+
+        @media(max-width:600px){
+            .signup-container{
+                padding:25px;
+            }
+
+            .role-options{
+                flex-direction:column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="signup-container">
+
+    <div class="logo-section">
+        <h1>Create Account</h1>
+        <p>Join our marketplace today</p>
+    </div>
+
     <form action="/auth/signup" method="POST" enctype="multipart/form-data">
-      <p><label for="full_name">Full name: </label><input name="full_name" id="full_name" type="text" required></p>
-      <p><label for="user_name">Username: </label><input name="user_name" id="user_name" type="text" required></p>
-      <p><label for="user_email">Email: </label><input name="user_email" id="user_email" type="email" required></p>
-      <p><label for="password">Password: </label><input name="password" id="password" type="password" autocomplete="new-password" required></p>
-      <p><label for="password_confirm">Confirm password: </label><input name="password_confirm" id="password_confirm" type="password" autocomplete="off" required></p>
 
-      <p><label for="profile">Profile image (15MB max size): </label><input name="profile" id="profile" type="file" accept="image/*"></p>
-      <input name="profile_base64" id="profile_base64" type="hidden">
+        <div class="form-group">
+            <label for="full_name">Full Name</label>
+            <input name="full_name" id="full_name" type="text" required>
+        </div>
 
-      <fieldset>
-        <legend>Choose role:</legend>
-        <p><label><input name="user_role" type="radio" value="buyer" required> Buyer</label></p>
-        <p><label><input name="user_role" type="radio" value="seller" required> Seller</label></p>
-      </fieldset>
-      <button type="submit">Register</button>
+        <div class="form-group">
+            <label for="user_name">Username</label>
+            <input name="user_name" id="user_name" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="user_email">Email Address</label>
+            <input name="user_email" id="user_email" type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" id="password" type="password"
+                   autocomplete="new-password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirm">Confirm Password</label>
+            <input name="password_confirm"
+                   id="password_confirm"
+                   type="password"
+                   autocomplete="off"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="profile">Profile Image (15MB Max)</label>
+
+            <div class="file-upload">
+                <input name="profile"
+                       id="profile"
+                       type="file"
+                       accept="image/*">
+            </div>
+        </div>
+
+        <input name="profile_base64"
+               id="profile_base64"
+               type="hidden">
+
+        <div class="role-selection">
+            <h4>Select Account Type</h4>
+
+            <div class="role-options">
+
+                <label class="role-card">
+                    <input name="user_role"
+                           type="radio"
+                           value="buyer"
+                           required>
+                    Buyer
+                </label>
+
+                <label class="role-card">
+                    <input name="user_role"
+                           type="radio"
+                           value="seller"
+                           required>
+                    Seller
+                </label>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn-register">
+            Create Account
+        </button>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="/auth/login">Login</a>
+        </div>
+
     </form>
 
-    <script src="/static/js/auth/signup.js"></script>
-  </body>
+</div>
+
+<script src="/static/js/auth/signup.js"></script>
+
+</body>
 </html>
